@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: chatiq-default
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              network/chatiq-default: "true"
+  podSelector:
+    matchLabels:
+      network/chatiq-default: "true"

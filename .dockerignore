@@ -1,0 +1,9 @@
+# Ignore Git files and directories
+.git
+.gitignore
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Node.js modules
+node_modules/

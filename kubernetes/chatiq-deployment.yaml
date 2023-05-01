@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: chatiq
+  name: chatiq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: chatiq
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        network/chatiq-default: "true"
+        service: chatiq
+    spec:
+      containers:
+        - env:
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: chatiq-config
+                  key: LOG_LEVEL
+            - name: SLACK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: chatiq-secrets
+                  key: SLACK_CLIENT_ID
+            - name: SLACK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: chatiq-secrets
+                  key: SLACK_CLIENT_SECRET
+            - name: SLACK_SIGNING_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: chatiq-secrets
+                  key: SLACK_SIGNING_SECRET
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: chatiq-secrets
+                  key: OPENAI_API_KEY
+            - name: POSTGRES_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chatiq-secrets
+                  key: POSTGRES_URL
+            - name: WEAVIATE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chatiq-secrets
+                  key: WEAVIATE_URL
+          image: yujiosaka/chatiq
+          name: chatiq
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources: {}
+      restartPolicy: Always
+status: {}

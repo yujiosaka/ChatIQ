@@ -1,0 +1,89 @@
+version: "3.9"
+
+services:
+  chatiq:
+    build:
+      context: .
+      target: development
+    environment:
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LANGCHAIN_HANDLER: langchain
+      LANGCHAIN_ENDPOINT: http://langchain-backend:8000
+      POSTGRES_URL: postgresql://postgres:postgres@postgres:5432/postgres
+      WEAVIATE_URL: http://weaviate:8080
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - site-packages:/usr/local/lib/python3.10/site-packages
+      - node-modules:/app/node_modules
+    depends_on:
+      - postgres
+      - weaviate
+    restart: always
+
+  langchain-frontend:
+    image: notlangchain/langchainplus-frontend:latest
+    environment:
+      BACKEND_URL: http://langchain-backend:8000
+      PUBLIC_BASE_URL: http://localhost:8000
+      PUBLIC_DEV_MODE: true
+    ports:
+      - 4173:4173
+    depends_on:
+      - langchain-backend
+    restart: always
+
+  langchain-backend:
+    image: notlangchain/langchainplus:latest
+    environment:
+      PORT: 8000
+      LANGCHAIN_ENV: local
+    ports:
+      - 8000:8000
+    depends_on:
+      - langchain-db
+    restart: always
+
+  langchain-db:
+    image: postgres:14.1
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    expose:
+      - 5432
+    restart: always
+
+  postgres:
+    image: postgres:14.1
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    expose:
+      - 5432
+    restart: always
+
+  weaviate:
+    image: semitechnologies/weaviate:1.19.0
+    environment:
+      QUERY_DEFAULTS_LIMIT: 20
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: "./data"
+      DEFAULT_VECTORIZER_MODULE: text2vec-transformers
+      ENABLE_MODULES: text2vec-transformers
+      TRANSFORMERS_INFERENCE_API: http://t2v-transformers:8080
+      CLUSTER_HOSTNAME: 'node1'
+    expose:
+      - 8080
+    restart: always
+
+  t2v-transformers:
+    image: semitechnologies/transformers-inference:sentence-transformers-multi-qa-MiniLM-L6-cos-v1
+    environment:
+      ENABLE_CUDA: 0
+
+volumes:
+  site-packages: {}
+  node-modules: {}

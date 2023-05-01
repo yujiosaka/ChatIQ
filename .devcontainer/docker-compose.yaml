@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - site-packages:/usr/local/lib/python3.10/site-packages
+      - node-modules:/app/node_modules
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.git-credentials:/root/.git-credentials
+    command: sleep infinity
+    restart: always

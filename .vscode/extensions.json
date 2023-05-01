@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "bungcip.better-toml",
+    "littlefoxteam.vscode-python-test-adapter",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.isort",
+    "ms-python.python",
+    "ms-vscode.makefile-tools",
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker"
+  ]
+}

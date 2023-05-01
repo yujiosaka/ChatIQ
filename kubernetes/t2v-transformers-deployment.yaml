@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: t2v-transformers
+  name: t2v-transformers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: t2v-transformers
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        network/chatiq-default: "true"
+        service: t2v-transformers
+    spec:
+      containers:
+        - env:
+            - name: ENABLE_CUDA
+              value: "0"
+          image: semitechnologies/transformers-inference:sentence-transformers-multi-qa-MiniLM-L6-cos-v1
+          name: t2v-transformers
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

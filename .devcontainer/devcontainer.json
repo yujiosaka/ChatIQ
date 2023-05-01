@@ -1,0 +1,22 @@
+{
+  "dockerComposeFile": [
+    "../docker-compose.yaml",
+    "docker-compose.yaml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bungcip.better-toml",
+        "littlefoxteam.vscode-python-test-adapter",
+        "ms-python.black-formatter",
+        "ms-python.flake8",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-vscode.makefile-tools",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}

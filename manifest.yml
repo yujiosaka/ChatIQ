@@ -1,0 +1,69 @@
+display_information:
+  name: ChatIQ
+  description: Your AI-powered assistant for smarter, more effective Slack conversations.
+  background_color: "#2c2d30"
+  long_description: "Meet your new AI-powered Slack assistant, designed to revolutionize your workspace conversations. Our bot is not just any bot; it's an intelligent communication tool designed to make your life easier and your interactions more efficient. Here's how it can help:\r
+
+    \r
+
+    :speech_balloon:  *Contextual Understanding*: Our bot is smart. It understands the context from channel descriptions and topics, providing you with relevant responses.\r
+
+    :meta:  *Always Responsive*: Whether you mention it in a channel or a thread, it's always ready to respond, ensuring your queries never go unnoticed.\r
+
+    :file_folder:  *Long-term Memory*: Never lose track of important conversations. Our bot stores conversations over time, so you always have a record of past interactions.\r
+
+    :lock:  *Privacy Conscious*: Your private conversations remain private. It respects channel privacy settings, ensuring sensitive discussions stay within the channel. Important note: Our bot uses OpenAI's API and stores conversations for up to a year. It's recommended not to invite the bot to channels where sensitive information is discussed.\r
+
+    :bulb:  *Intelligent Responses*: Powered by OpenAI's GPT model, it generates smart, contextually accurate responses, making interactions more natural.\r
+
+    :paperclip:  *File Memory*: Can't remember where that file was shared? Don't worry. Our bot reads and stores file attachments, so you can easily find them when needed.\r
+
+    :hourglass_flowing_sand:  *Past Conversations*: It can pull up and store past Slack conversations, providing a comprehensive history of your team's communication.\r
+
+    \r
+
+    Experience a new way of communication in your workspace. Enhance productivity, efficiency, and collaboration with our AI-powered Slack bot."
+features:
+  app_home:
+    home_tab_enabled: true
+    messages_tab_enabled: false
+    messages_tab_read_only_enabled: true
+  bot_user:
+    display_name: ChatIQ
+    always_online: true
+oauth_config:
+  redirect_urls:
+    - https://example.com/slack/oauth_redirect
+  scopes:
+    bot:
+      - app_mentions:read
+      - channels:history
+      - channels:read
+      - chat:write
+      - files:read
+      - groups:history
+      - groups:read
+      - links:read
+      - mpim:history
+      - mpim:read
+settings:
+  event_subscriptions:
+    request_url: https://example.com/slack/events
+    bot_events:
+      - app_home_opened
+      - app_mention
+      - app_uninstalled
+      - channel_deleted
+      - file_deleted
+      - file_shared
+      - group_deleted
+      - link_shared
+      - message.channels
+      - message.groups
+      - message.mpim
+  interactivity:
+    is_enabled: true
+    request_url: https://example.com/slack/events
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false

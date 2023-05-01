@@ -1,0 +1,15 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    ["@semantic-release/exec", {
+      "prepareCmd": "./update_version.sh ${nextRelease.version}",
+      "publishCmd": "echo 'nextVer=${nextRelease.version}' >> $GITHUB_OUTPUT"
+    }],
+    ["@semantic-release/git", {
+      "assets": ["CHANGELOG.md", "pyproject.toml"]
+    }]
+  ]
+}

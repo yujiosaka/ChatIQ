@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: weaviate
+  name: weaviate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: weaviate
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        network/chatiq-default: "true"
+        service: weaviate
+    spec:
+      containers:
+        - env:
+            - name: AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED
+              value: "true"
+            - name: CLUSTER_HOSTNAME
+              value: node1
+            - name: DEFAULT_VECTORIZER_MODULE
+              value: text2vec-transformers
+            - name: ENABLE_MODULES
+              value: text2vec-transformers
+            - name: PERSISTENCE_DATA_PATH
+              value: ./data
+            - name: QUERY_DEFAULTS_LIMIT
+              value: "20"
+            - name: TRANSFORMERS_INFERENCE_API
+              value: http://t2v-transformers:8080
+          image: semitechnologies/weaviate:1.19.0
+          name: weaviate
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}
