@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ChatIQ"
-version = "0.1.0"
+version = "1.0.0"
 description = "A versatile Slack bot using GPT & Weaviate-powered long-term memory to accomplish various tasks."
 authors = ["yujiosaka <yujisobe@gmail.com>"]
 license = "GPL-3.0"
