@@ -33,7 +33,6 @@ Enter `/invite @ChatIQ` to invite ChatIQ to Slack channels.
 
 <img width="400" alt="Screenshot 2023-05-29 at 9 57 39" src="https://github.com/yujiosaka/ChatIQ/assets/2261067/541f3e98-bb8c-421c-b1c7-673c6ffaa613">
 
-
 ### Configure channel settings
 
 Use emojis in Slack channel topics and descriptions to override workspace settings.
@@ -48,6 +47,12 @@ Use emojis in Slack channel topics and descriptions to override workspace settin
 Mention `@ChatIQ` to start conversation.
 
 <img width="400" alt="conversation" src="https://github.com/yujiosaka/ChatIQ/assets/2261067/24328bfd-7e06-4067-a498-7b5c4bc4b687">
+
+### Reads from long-term memory
+
+More interestingly, you can ask `@ChatIQ` for the past conversations and even uploaded files in the current channel and public channels that`@ChatIQ` is invited to.
+
+<img width="400" alt="conversation" src="https://github.com/yujiosaka/ChatIQ/assets/2261067/4a1d2d03-baf5-4e9b-a234-8cdce7920017">
 
 ## Prerequisites
 
