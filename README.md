@@ -98,6 +98,12 @@ chatiq --port 4000
 
 To configure the server, you can set various environment variables. A complete list of available environment variables and their default values can be found in the [.env.example](https://github.com/yujiosaka/ChatIQ/blob/main/.env.example) file.
 
+## Integration with FastAPI
+
+ChatIQ does not officially support [FastAPI](https://github.com/slackapi/python-slack-sdk/issues/1276) because [one of the critical components in Python Slack SDK for multi-workspace support does not yet support asyncio](https://github.com/slackapi/python-slack-sdk/issues/1276).
+
+But the rest of the codebase is independent from server frameworks. So feel free to try integrating with FastAPI on your own. FastAPI will be officially supported as soon as the upstream issue is resolved.
+
 ## Integration with Flask
 
 ChatIQ can be integrated with [Flask](https://flask.palletsprojects.com/). Below are examples of how to set up a simple ChatIQ server with Flask.
