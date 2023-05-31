@@ -27,12 +27,6 @@ Click ChatIQ app to configure Slack workspace settings in App Home.
 
 <img width="400" alt="home-screen" src="https://github.com/yujiosaka/ChatIQ/assets/2261067/e1b73fae-78b1-47d0-9a02-d181e81b5c0f">
 
-### Invite ChatIQ to your preferred channels
-
-Enter `/invite @ChatIQ` to invite ChatIQ to Slack channels.
-
-<img width="400" alt="Screenshot 2023-05-29 at 9 57 39" src="https://github.com/yujiosaka/ChatIQ/assets/2261067/541f3e98-bb8c-421c-b1c7-673c6ffaa613">
-
 ### Configure channel settings
 
 Use emojis in Slack channel topics and descriptions to override workspace settings.
