@@ -1,8 +1,8 @@
 import logging
 from typing import Any, List
 
-from langchain.docstore.document import Document
-from langchain.vectorstores import Weaviate
+from langchain_community.docstore.document import Document
+from langchain_community.vectorstores import Weaviate
 from weaviate import Client
 from weaviate.exceptions import WeaviateBaseError
 

@@ -2,8 +2,8 @@ import threading
 from logging import Logger
 from typing import Callable, List, Tuple
 
-from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationTokenBufferMemory
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.memory import ConversationTokenBufferMemory
 from openai import BadRequestError, OpenAIError
 from slack_sdk.errors import SlackApiError
 from slack_sdk.web.client import WebClient
