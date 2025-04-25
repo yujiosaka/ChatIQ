@@ -4,7 +4,7 @@ from typing import Callable, List, Tuple
 
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationTokenBufferMemory
-from openai import OpenAIError, BadRequestError
+from openai import BadRequestError, OpenAIError
 from slack_sdk.errors import SlackApiError
 from slack_sdk.web.client import WebClient
 from sqlalchemy.exc import SQLAlchemyError
