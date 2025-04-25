@@ -225,6 +225,16 @@ pip install uv
 flask --app chatiq.main:app --debug run
 ```
 
+### Managing Dependencies
+
+When modifying dependencies in `pyproject.toml`, make sure to update the `requirements.txt` file by running:
+
+```sh
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+This ensures that the `requirements.txt` file stays in sync with the dependencies defined in `pyproject.toml`. The `requirements.txt` file is used by various deployment processes and should be committed to the repository whenever dependencies are updated.
+
 ### Docker Dev Container Setup
 
 Using Visual Studio Code and the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, you can simplify the development environment setup process. The extension allows you to develop inside a Docker container and automatically sets up the development environment for you.
