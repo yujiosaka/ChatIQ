@@ -29,33 +29,37 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install UV
+        uses: astral-sh/setup-uv@v1
+        with:
+          version: "0.6.16"
+          
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install poetry
-          poetry install
+          uv sync
+          uv pip install -e .[dev]
           npm ci
 
       - name: Lint with flake8
         run: |
-          poetry run flake8 chatiq
+          uv run flake8 chatiq
 
       - name: Check code formatting
         run: |
-          poetry run black --check chatiq
+          uv run black --check chatiq
 
       - name: Check imports with isort
         run: |
-          poetry run isort chatiq --check --diff
+          uv run isort chatiq --check --diff
 
       - name: Run Pytype
         run: |
-          poetry run pytype chatiq
+          uv run pytype chatiq
 
       - name: Run unit tests and measure code coverage
         run: |
-          poetry run coverage run -m pytest
-          poetry run coverage xml
+          uv run coverage run -m pytest
+          uv run coverage xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
@@ -68,7 +72,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish package
-        run: poetry publish --build -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          uv pip build .
+          uv pip publish --api-token ${{ secrets.PYPI_API_TOKEN }}
         if: ${{ steps.semantic-release.outputs.nextVer != null }}
 
       - name: Set up QEMU

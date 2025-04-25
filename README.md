@@ -205,10 +205,10 @@ git clone https://github.com/yujiosaka/ChatIQ.git
 cd chatiq
 ```
 
-3. Install `poetry`:
+3. Install `uv`:
 
 ```sh
-pip install poetry
+pip install uv
 ```
 
 4. Run the `setup_dev_env.sh` script to set up your development environment:
@@ -402,16 +402,16 @@ That's it! The ChatIQ Slack app is now installed in your workspace.
 
 ## Building and Publishing
 
-1. To build the project, use the `poetry build` command:
+1. To build the project, use the `uv pip build` command:
 
 ```sh
-poetry build
+uv pip build .
 ```
 
-2. To upload the built package to PyPI, use `poetry publish` command:
+2. To upload the built package to PyPI, use `uv pip publish` command:
 
 ```sh
-poetry publish
+uv pip publish
 ```
 
 ## Linting and Formatting
@@ -421,25 +421,25 @@ This project uses `flake8` for linting, `black` for code formatting, `isort` for
 To lint the code, run:
 
 ```sh
-flake8
+uv run flake8
 ```
 
 To format the code, run:
 
 ```sh
-black .
+uv run black .
 ```
 
 To organize imports, run:
 
 ```sh
-isort .
+uv run isort .
 ```
 
 To perform type checking with pytype, run:
 
 ```sh
-pytype chatiq
+uv run pytype chatiq
 ```
 
 ## Limitations and Considerations

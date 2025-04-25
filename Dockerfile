@@ -10,11 +10,14 @@ WORKDIR /app
 # for print statements and avoid output buffering.
 ENV PYTHONUNBUFFERED 1
 
+# Install UV
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Copy dependency files
 COPY pyproject.toml package.json package-lock.json ./
 
-RUN pip install --no-cache-dir poetry \
-    && poetry config virtualenvs.create false \
-    && poetry install --without dev --no-interaction --no-ansi
+# Install dependencies
+RUN uv sync --frozen
 
 #######################
 ## Development stage ##
@@ -36,8 +39,8 @@ RUN npm install
 # Initialize an empty Git repository
 # for allowing pre-commit install to run without errors.
 RUN git init \
-    && poetry install --no-interaction --no-ansi \
-    && poetry run pre-commit install
+    && uv sync --dev \
+    && uv run pre-commit install
 
 # indicate what port the server is running on
 EXPOSE 3000
@@ -49,7 +52,11 @@ CMD ["flask", "--app", "chatiq.main:app", "--debug", "run", "--host", "0.0.0.0",
 #######################
 FROM base AS production
 
+# Copy application code
 COPY . .
+
+# Set PATH to include UV tool bin directory
+ENV PATH="/usr/local/bin:${PATH}"
 
 # indicate what port the server is running on
 EXPOSE 3000

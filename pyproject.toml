@@ -54,5 +54,5 @@ chatiq = "bin.cli:run"
 line-length = 125
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
