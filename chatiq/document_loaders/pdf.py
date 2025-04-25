@@ -5,11 +5,11 @@ from http import HTTPStatus
 from typing import Iterator, List
 
 import requests
+from langchain.text_splitter import TokenTextSplitter
 from langchain_community.docstore.document import Document
 from langchain_community.document_loaders.base import BaseLoader
 from langchain_community.document_loaders.blob_loaders import Blob
 from langchain_community.document_loaders.parsers.pdf import PyMuPDFParser
-from langchain.text_splitter import TokenTextSplitter
 from slack_bolt import BoltContext
 
 from chatiq.constants import FILE_DOCUMENT_THREAD_TS
