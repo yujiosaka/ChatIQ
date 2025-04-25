@@ -21,7 +21,7 @@ dependencies = [
     "flask>=2.3.2",
     "gunicorn>=20.1.0",
     "langchain>=0.0.173",
-    "openai>=1.68.2",
+    "openai>=0.27.6",
     "psycopg2-binary>=2.9.6",
     "python-dotenv>=1.0.0",
     "requests==2.28.0", # Pin to 2.28.0 due to a bug introduced in 2.30.0 (https://github.com/psf/requests/issues/6437)
