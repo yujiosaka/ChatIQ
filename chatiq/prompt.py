@@ -1,4 +1,4 @@
-from langchain.prompts.chat import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
 
 INPUT_VARIABLES = ["input", "chat_history", "agent_scratchpad", "bot_id", "channel_id", "time_message", "context"]
 
