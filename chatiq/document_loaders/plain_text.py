@@ -2,7 +2,7 @@ import logging
 from datetime import datetime, timezone
 from typing import List
 
-from langchain.text_splitter import TokenTextSplitter
+from langchain_community.text_splitter import TokenTextSplitter
 from langchain_community.docstore.document import Document
 from langchain_community.document_loaders.base import BaseLoader
 
