@@ -2,8 +2,8 @@ import logging
 from datetime import datetime, timezone
 from typing import List
 
-from langchain.docstore.document import Document
-from langchain.document_loaders.base import BaseLoader
+from langchain_community.docstore.document import Document
+from langchain_community.document_loaders.base import BaseLoader
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 

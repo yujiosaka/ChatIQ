@@ -4,7 +4,7 @@ from logging import Logger
 from operator import attrgetter
 from typing import Callable, List, Optional, Tuple
 
-from langchain.docstore.document import Document
+from langchain_community.docstore.document import Document
 from slack_bolt import BoltContext
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError

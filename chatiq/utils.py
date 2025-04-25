@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any, List, Optional
 
 from dateutil.tz import tzoffset
-from langchain.docstore.document import Document
+from langchain_community.docstore.document import Document
 from pytz import UTC, common_timezones, timezone
 
 JSON_INDENT_LEVEL = 4

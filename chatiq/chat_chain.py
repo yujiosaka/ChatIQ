@@ -2,13 +2,13 @@ from datetime import datetime
 from typing import List
 
 from dateutil import tz
-from langchain.agents import initialize_agent
-from langchain.agents.agent_types import AgentType
-from langchain.chains import RetrievalQA
-from langchain.chat_models.base import BaseChatModel
-from langchain.memory.chat_memory import BaseChatMemory
-from langchain.schema import BaseRetriever
-from langchain.tools import Tool
+from langchain_community.agents import initialize_agent
+from langchain_community.agents.agent_types import AgentType
+from langchain_community.chains import RetrievalQA
+from langchain_community.chat_models.base import BaseChatModel
+from langchain_community.memory.chat_memory import BaseChatMemory
+from langchain_community.schema import BaseRetriever
+from langchain_community.tools import Tool
 
 from chatiq.document_loaders import PdfLoader, PlainTextLoader, SlackLinkLoader, UnfurlingLinkLoader
 from chatiq.prompt import (
