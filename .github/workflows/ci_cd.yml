@@ -39,24 +39,24 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          uv run --system flake8 chatiq
+          uv run flake8 chatiq
 
       - name: Check code formatting
         run: |
-          uv run --system black --check chatiq
+          uv run black --check chatiq
 
       - name: Check imports with isort
         run: |
-          uv run --system isort chatiq --check --diff
+          uv run isort chatiq --check --diff
 
       - name: Run Pytype
         run: |
-          uv run --system pytype chatiq
+          uv run pytype chatiq
 
       - name: Run unit tests and measure code coverage
         run: |
-          uv run --system coverage run -m pytest
-          uv run --system coverage xml
+          uv run coverage run -m pytest
+          uv run coverage xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
@@ -69,7 +69,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish package
-        run: uv pip build --system . && uv pip publish --system --api-token ${{ secrets.PYPI_API_TOKEN }}
+        run: uv pip build . && uv pip publish --api-token ${{ secrets.PYPI_API_TOKEN }}
         if: ${{ steps.semantic-release.outputs.nextVer != null }}
 
       - name: Set up QEMU
