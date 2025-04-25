@@ -12,9 +12,8 @@ ENV PYTHONUNBUFFERED 1
 
 COPY pyproject.toml package.json package-lock.json ./
 
-RUN pip install --no-cache-dir poetry \
-    && poetry config virtualenvs.create false \
-    && poetry install --without dev --no-interaction --no-ansi
+RUN pip install --no-cache-dir uv \
+    && uv pip install --system -e .
 
 #######################
 ## Development stage ##
@@ -36,8 +35,8 @@ RUN npm install
 # Initialize an empty Git repository
 # for allowing pre-commit install to run without errors.
 RUN git init \
-    && poetry install --no-interaction --no-ansi \
-    && poetry run pre-commit install
+    && uv pip install --system -e .[dev] \
+    && uv run pre-commit install
 
 # indicate what port the server is running on
 EXPOSE 3000
