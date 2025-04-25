@@ -1,7 +1,7 @@
 import pytest
 import requests_mock
-from langchain.document_loaders.parsers.pdf import PyMuPDFParser
-from langchain.schema import Document
+from langchain_community.document_loaders.parsers.pdf import PyMuPDFParser
+from langchain_community.schema import Document
 from slack_bolt import BoltContext
 
 from chatiq.document_loaders import PdfLoader

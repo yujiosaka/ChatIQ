@@ -1,5 +1,5 @@
 import pytest
-from langchain.vectorstores import Weaviate
+from langchain_community.vectorstores import Weaviate
 from weaviate import Client
 from weaviate.gql import Query
 

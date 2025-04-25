@@ -1,5 +1,5 @@
-from langchain.vectorstores import Weaviate
-from langchain.vectorstores.base import VectorStoreRetriever
+from langchain_community.vectorstores import Weaviate
+from langchain_community.vectorstores.base import VectorStoreRetriever
 
 
 class Retriever(VectorStoreRetriever):

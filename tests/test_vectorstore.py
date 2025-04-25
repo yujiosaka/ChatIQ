@@ -1,7 +1,7 @@
 import pytest
-from langchain.docstore.document import Document
-from langchain.vectorstores.base import VectorStoreRetriever
-from langchain.vectorstores.weaviate import Weaviate
+from langchain_community.docstore.document import Document
+from langchain_community.vectorstores.base import VectorStoreRetriever
+from langchain_community.vectorstores.weaviate import Weaviate
 from weaviate import Client
 from weaviate.batch import Batch
 from weaviate.schema import Schema
