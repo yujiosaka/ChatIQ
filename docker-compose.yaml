@@ -66,7 +66,7 @@ services:
     restart: always
 
   weaviate:
-    image: semitechnologies/weaviate:1.19.0
+    image: cr.weaviate.io/semitechnologies/weaviate:1.19.0
     environment:
       QUERY_DEFAULTS_LIMIT: 20
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
