@@ -4,7 +4,7 @@ from typing import Callable, List, Tuple
 
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationTokenBufferMemory
-from openai.error import InvalidRequestError, OpenAIError
+from openai import BadRequestError, OpenAIError
 from slack_sdk.errors import SlackApiError
 from slack_sdk.web.client import WebClient
 from sqlalchemy.exc import SQLAlchemyError
@@ -135,8 +135,8 @@ class AppMentionHandler(BaseHandler):
                 f"is one of {', '.join(SlackTeam.TIMEZONE_OFFSETS)}.",
                 thread_ts=thread_ts,
             )
-        except InvalidRequestError as e:
-            logger.error(f"InvalidRequestError: {e}")
+        except BadRequestError as e:
+            logger.error(f"BadRequestError: {e}")
             say(
                 "I'm sorry, something went wrong. Your message might be too large. "
                 "Plese you try reducing the size and send it again.",
